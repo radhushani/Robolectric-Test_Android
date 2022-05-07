@@ -1,17 +1,22 @@
 package com.myproject.robolectric_test_textview
 
+
+import android.widget.TextView
+import junit.framework.Assert.assertEquals
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.robolectric.Robolectric
+import org.robolectric.RobolectricTestRunner
 
-import org.junit.Assert.*
-
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
+@RunWith(RobolectricTestRunner::class)
 class ExampleUnitTest {
+
     @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+    fun check_main_activity_text() {
+        val activity = Robolectric.buildActivity(SecondActivity::class.java).create().get()
+        val textView : TextView = activity.findViewById<TextView>(R.id.textViewActivity)
+        assertEquals("Hello World!!", textView.text)
     }
+
+
 }
